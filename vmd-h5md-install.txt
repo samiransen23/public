@@ -1,0 +1,26 @@
+Changes in CMakeLists.txt
+================================================================================
+@ line 14
+-    set(VMD_PLUGIN_INCLUDE_DIR "${VMDDIR}/plugins/include" CACHE STRING "Path to VMD plugin headers")
+-    set(VMD_PLUGIN_PATH "${VMDDIR}/plugins/LINUXAMD64" CACHE STRING "Path to VMD plugin headers")
++    set(VMD_PLUGIN_INCLUDE_DIR "/Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/plugins/include" CACHE STRING "Path to VMD plugin headers")
++    set(VMD_PLUGIN_PATH "/Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/plugins/MACOSXX86_64" CACHE STRING "Path to VMD plugin headers")
+
+@ line 25
++include_directories("/usr/local/Cellar/open-mpi/4.0.5/include")
++include_directories("/Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/plugins/include")
+
+@ 60
+-  DESTINATION "${VMD_PLUGIN_PATH}/molfile"
++  DESTINATION "/Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/plugins/MACOSXX86_64/molfile"
+================================================================================
+> brew info -q hdf5-mpi
+hdf5-mpi: stable 1.12.0 (bottled)
+> brew info -q cmake
+cmake: stable 3.19.0 (bottled), HEAD
+> brew info -q open-mpi
+open-mpi: stable 4.0.5 (bottled), HEAD
+> /usr/local/bin/cmake . -DVMD_EXECUTABLE=/Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/vmd_MACOSXX86_64
+> make
+> make install
+> cp h5mdplugin.dylib /Applications/VMD\ 1.9.4a43-Catalina-Rev6.app/Contents/vmd/plugins/MACOSXX86_64/molfile/h5mdplugin.so
